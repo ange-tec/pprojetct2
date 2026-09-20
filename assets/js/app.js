@@ -19,6 +19,23 @@ const app = {
     return navigator.onLine;
   },
 
+  updateConnectionStatus() {
+    const banner = document.getElementById("offline-banner");
+    const modeBadge = document.getElementById("app-mode");
+    if (!banner || !modeBadge) return;
+
+    const online = app.isOnline();
+
+    banner.textContent = online
+      ? "Connexion réseau détectée — les notes sont synchronisées."
+      : "Aucune connexion réseau détectée — les notes sont enregistrées localement.";
+
+    banner.classList.toggle("offline-banner--hidden", online);
+    modeBadge.textContent = online ? "Mode en ligne" : "Mode local";
+    modeBadge.classList.toggle("app-mode--online", online);
+    modeBadge.classList.toggle("app-mode--local", !online);
+  },
+
   getFromLocalStorage(key) {
     const value = localStorage.getItem(key);
     if (!value) return [];
@@ -355,18 +372,21 @@ const app = {
     }
 
     window.addEventListener("online", async () => {
+      app.updateConnectionStatus();
       app.logOperation("En ligne", true, "info");
       await app.syncPendingOperations();
       await app.loadNotes();
     });
 
     window.addEventListener("offline", () => {
+      app.updateConnectionStatus();
       app.logOperation("Hors ligne", false, "info");
     });
   },
 
   async init() {
     app.logOperation("Initialisation de l'application.", true, "info");
+    app.updateConnectionStatus();
     app.registerServiceWorker();
     app.attachDOMEvents();
 
