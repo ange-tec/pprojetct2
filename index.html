@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="/assets/icons/favicon.png"
+      type="image/png"
+    />
+    <title>NoteKeeper - Votre gestionnaire de notes</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Gestionnaire de notes</p>
+          <h1>NoteKeeper</h1>
+        </div>
+        <span id="app-mode" class="app-mode app-mode--local">Mode local</span>
+      </header>
+
+      <div id="offline-banner" class="offline-banner" aria-live="polite">
+        Aucune connexion réseau détectée — les notes sont enregistrées localement.
+      </div>
+
+      <main class="layout">
+        <section class="panel panel--composer">
+          <div class="panel-header">
+            <h2>Créer une nouvelle note</h2>
+          </div>
+
+          <form id="note-creator" class="composer-form">
+            <textarea
+              id="note-creator-content"
+              placeholder="Écrivez votre note ici..."
+            ></textarea>
+            <button type="submit">Créer cette note</button>
+          </form>
+        </section>
+
+        <section class="panel panel--notes">
+          <div class="panel-header">
+            <h2>Notes</h2>
+          </div>
+
+          <div id="notes-container" class="item-list"></div>
+        </section>
+
+        <aside class="panel panel--logs">
+          <div class="panel-header">
+            <h2>Activité</h2>
+          </div>
+
+          <div id="logs-container" class="item-list logs-list"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="/assets/js/api.js"></script>
+    <script src="/assets/js/app.js"></script>
+  </body>
+</html>

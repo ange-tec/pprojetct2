@@ -1,0 +1,259 @@
+:root {
+  --bg: #f6f8fc;
+  --panel: #ffffff;
+  --panel-border: #e3e8f3;
+  --primary: #4f46e5;
+  --primary-soft: #eef2ff;
+  --primary-strong: #3730a3;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --success-bg: #e0f2fe;
+  --success-text: #0f766e;
+  --error-bg: #fee2e2;
+  --error-text: #b91c1c;
+  --warning-bg: #fff7ed;
+  --warning-text: #9a4d00;
+  --shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+  color: var(--text);
+}
+
+body {
+  padding: 32px 20px;
+}
+
+button, textarea {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.app-mode {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.app-mode--local {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.offline-banner {
+  margin-bottom: 1.2rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  background: var(--warning-bg);
+  border: 1px solid #fdba74;
+  color: var(--warning-text);
+  font-weight: 600;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 0.8fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: 1rem;
+}
+
+.panel-header {
+  margin-bottom: 1rem;
+}
+
+.composer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+textarea {
+  width: 100%;
+  min-height: 160px;
+  resize: vertical;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  background: #f8fafc;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+button {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-strong) 100%);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+button:hover {
+  filter: brightness(1.04);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.85rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.item textarea {
+  min-height: 72px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.item button {
+  padding: 0.55rem 0.8rem;
+  font-size: 0.72rem;
+  min-width: 110px;
+}
+
+.item button[type="button"] {
+  background: var(--primary-soft);
+  color: var(--primary-strong);
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  border: 1px solid var(--panel-border);
+}
+
+.log div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.log p {
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.log--success p {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.log--delete p {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.log--error p {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 20px 14px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .item button {
+    width: 100%;
+  }
+}
